@@ -19,7 +19,7 @@ class ServiceMock:
                    '-h', self.container_name,
                    '-v', "{0}:{1}".format(os.getcwd(), "/data/"),
                    '-e', 'FLASK_APP=/data/test/json-server/server.py',
-                   'weaveworksdemos/json-server',
+                   'haroldmei/json-server',
                    '--port', '80']
         Docker().execute(command)
         sleep(2)
@@ -63,7 +63,7 @@ class OrdersContainerTest(unittest.TestCase):
                    self.payment_mock.container_name,
                    '--link',
                    self.shipping_mock.container_name,
-                   'weaveworksdemos/orders:' + self.COMMIT]
+                   'haroldmei/orders:' + self.COMMIT]
         Docker().execute(command, dump_streams=True)
         self.ip = Docker().get_container_ip(OrdersContainerTest.container_name)
 

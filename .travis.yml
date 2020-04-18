@@ -7,14 +7,14 @@ jdk:
 install: true
 
 env:
-  - GROUP=weaveworksdemos COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG REPO=orders;
+  - GROUP=haroldmei TRAVIS_TAG=latest COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG REPO=orders;
 
 script:
   - set -e
   - sudo ./scripts/build.sh;
   - travis_wait ./test/test.sh unit.py
   - ./test/test.sh component.py
-  - docker build -t weaveworksdemos/json-server ./test/json-server/
+  - docker build -t haroldmei/json-server ./test/json-server/
   - ./test/test.sh container.py --tag $TAG
 
 after_success:
